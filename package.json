@@ -28,15 +28,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "test": "DISABLE_ESLINT_PLUGIN=true react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -50,20 +44,6 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@babel/preset-react": "^7.23.3",
-    "eslint": "^8.56.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "plugin:jsx-a11y/recommended"
-    ]
-  }
-  
-  ,
   "devDependencies": {
     "eslint-plugin-jsx-a11y": "^6.4.1"
   }

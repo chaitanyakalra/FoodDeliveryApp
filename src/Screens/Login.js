@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
+
   });
+
+
 
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('Email:', credentials.email);
-    console.log('Password:', credentials.password);
+    // console.log('Email:', credentials.email);
+    // console.log('Password:', credentials.password);
+
 
     try {
 
@@ -28,13 +34,14 @@ export default function Login() {
         body: JSON.stringify({
           email: credentials.email,
           password: credentials.password,
+
         }),
       });
 
       console.log("Fetch working");
 
       const json = await response.json();
-      console.log(json);
+      console.log("json", json);
 
       if (!json.success) {
         alert('Enter Valid Credentials');
@@ -42,7 +49,14 @@ export default function Login() {
 
         localStorage.setItem("userEmail", credentials.email);
         localStorage.setItem("authToken", json.authToken);
+        localStorage.setItem("username", json.name);
         console.log(localStorage.getItem("authToken"));
+        console.log(localStorage.getItem("username"));
+
+
+        // localStorage.setItem("username", credentials.name);
+        // console.log("Stored username:", localStorage.getItem("username"));
+
         navigate('/');
       }
 
@@ -57,9 +71,17 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundImage: 'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', height: '100vh', backgroundSize: 'cover' }}>
+      <div>
+        <Navbar />
+      </div>
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <div className='w-50 m-auto mt-5 saiba-font' style={{ }}>
+          <h2>
+            Sign in to your account
+          </h2>
+        </div>
+        {/* <form className='w-50 m-auto mt-5 border bg-dark border-success rounded' onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">
               Email address
@@ -99,7 +121,27 @@ export default function Login() {
           <Link to="/creatUser" className="m-3 btn btn-danger">
             I am a new User
           </Link>
+        </form> */}
+
+        <form className='w-50 m-auto mt-5 ' onSubmit={handleSubmit}>
+          <div className="m-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+            <input type="email" className="form-control" name='email' value={credentials.email} onChange={onChange} aria-describedby="emailHelp" />
+            <div id="emailHelp" className="form-text">We'll never share your email with anyone.</div>
+          </div>
+          <div className="m-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+            <input type="password" className="form-control" value={credentials.password} onChange={onChange} name='password' />
+          </div>
+          <button type="submit" className="m-3 btn btn-success">Submit</button>
+          <Link to="/creatuser" className="m-3 mx-1 btn btn-danger">New User</Link>
         </form>
+      </div>
+
+
+      <div style={{position: 'absolute', bottom: '0', width: '100%', textAlign: 'center' }}>
+
+        <Footer />
       </div>
     </div>
   );

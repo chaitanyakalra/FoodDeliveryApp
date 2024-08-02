@@ -11,11 +11,19 @@ import { useSyncExternalStore } from 'react-redux';
 
 
 export default function Navbar(props) {
+  const [username, setUsername] = useState('Guest');
   const [cartView, setCartView] = useState(false);
   const navigate = useNavigate();
   let data = useCart();
+
+  const fetchUsername = () => {
+    const storedUsername = localStorage.getItem('username');
+    setUsername(storedUsername || 'Guest');
+};
   const handleLogout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem('username');
+      fetchUsername(); 
     navigate("/login");
   }
 
