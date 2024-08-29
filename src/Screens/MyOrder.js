@@ -56,6 +56,7 @@ export default function MyOrder() {
             <Navbar />
             <div className='container'>
                 <div className='row'>
+                    <h1 className="saiba-font" style={{textAlign: 'center', padding:'1rem'}}>Your Orders</h1>
                     {orderData.length > 0 ? (
                         orderData.slice(0).reverse().map((order, orderIndex) => (
                             order.length > 0 && (
