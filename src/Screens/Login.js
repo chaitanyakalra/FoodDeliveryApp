@@ -81,47 +81,7 @@ export default function Login() {
             Sign in to your account
           </h2>
         </div>
-        {/* <form className='w-50 m-auto mt-5 border bg-dark border-success rounded' onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              aria-describedby="emailHelp"
-              name="email"
-              value={credentials.email}
-              onChange={onChange}
-              autoComplete="email"
-            />
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
-            </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={credentials.password}
-              onChange={onChange}
-              autoComplete="current-password"
-            />
-          </div>
-
-          <button type="submit" className="m-3 btn btn-success">
-            Submit
-          </button>
-          <Link to="/creatUser" className="m-3 btn btn-danger">
-            I am a new User
-          </Link>
-        </form> */}
+       
 
         <form className='w-50 m-auto mt-5 ' onSubmit={handleSubmit}>
           <div className="m-3">
